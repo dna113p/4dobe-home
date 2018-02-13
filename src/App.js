@@ -8,6 +8,8 @@ import HeatingWidget from './components/HeatingWidget';
 import LightList from './components/Lights';
 
 export default class App {
+  //Custom App component for the base of our application
+  //constructed with a root node to render to
   constructor( root ){
     this.$root = $(root);
     this.store = new Store;
@@ -15,25 +17,26 @@ export default class App {
   }
 
   //Call this to render component
+  //Setup layout for app
   render() {
 
-    const HeaderWrapper = $(`<header></header>`)
+    //Header Section
     const Header = $(`<div class="header"></div>`)
-      const Heating = new HeatDisplay(this.store);
-      Header.append( $(`<h1>DJ's Home</h1>`), Heating.render() )
-      HeaderWrapper.html(Header)
+    const Heating = new HeatDisplay(this.store);
+    Header.html( [$(`<h1>DJ's Smart Home</h1>`), Heating.render()] )
+    const HeaderWrapper = $(`<header></header>`)
+    HeaderWrapper.html(Header)
 
-    const NavBar = new Nav(this.store);
-
+    //Main Content Section
     const Main = $(`<main></main>`)
+    const NavBar = new Nav(this.store);
     const Lights = new LightList(this.store);
     const TemperatureControl = new HeatingWidget(this.store);
+
     const Routes = [Lights,TemperatureControl]
+    Main.html(Routes[this.store.currentRoute].render())
 
-    Main.html( 
-      Routes[this.store.currentRoute].render()
-    )
-
-    this.$root.html( [HeaderWrapper, NavBar.render(), Main] )
+    //Finally render all children to the root element (document.body)
+    this.$root.html([HeaderWrapper, NavBar.render(), Main])
   }
 }

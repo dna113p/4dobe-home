@@ -17,6 +17,7 @@ class Lights extends Component{
       const light = new LightItem(item) 
       return light.render();
     })
+
     this.$root.html( LightsList )
     return this.$root
   }

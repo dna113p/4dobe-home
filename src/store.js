@@ -1,10 +1,13 @@
 import {getData} from './api'
 
-//Centralize data storage
+//Centralized place to store the state of the application
 export default class Store {
 
   constructor() {
     this.data = {}
+    this.dependencies = {} 
+
+    //Setup simple routing with the store
     this.routes = [
       { name: 'Lighting', class: 'far fa-lightbulb' },
       { name: 'Temperature', class: 'fas fa-thermometer-half' },
@@ -12,9 +15,9 @@ export default class Store {
     ]
     this.currentRoute = 0;
     this.routeWrapper = null
-    this.dependencies = {} 
   }
 
+  //Asynchronously load data
   async loadData() {
     this.data = await getData()
   }
@@ -37,7 +40,6 @@ export default class Store {
   SetTemp(val) {
     if ( this.data ) {
       this.data.temperature.target += val
-      console.log(this.dependencies['temp'])
       this.dependencies['temp'].forEach(element => {
         element.render();
       });
