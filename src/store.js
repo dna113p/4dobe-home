@@ -2,19 +2,45 @@ import {getData} from './api'
 
 //Centralize data storage
 export default class Store {
+
   constructor() {
     this.data = {}
+    this.routes = [
+      { name: 'Lighting', class: 'far fa-lightbulb' },
+      { name: 'Temperature', class: 'fas fa-thermometer-half' },
+      { name: 'Settings', class: 'fas fa-cog' }
+    ]
+    this.currentRoute = 0;
+    this.routeWrapper = null
+    this.dependencies = {} 
   }
+
   async loadData() {
     this.data = await getData()
   }
 
-  //Use store methods as actions to update store values
-  SetTemp(val, component) {
+  //Register a component with the store in dependencies so that it can
+  //be updated by an action
+  registerDep(key, component){
+    if ( this.dependencies[key] === undefined ) this.dependencies[key] = [];
+    this.dependencies[key].push(component);
+    console.log(this.dependencies)
+  }
+
+  /*
+  *
+  * Actions
+  * Use methods on the store as Actions that update the store
+  * and render dependents
+  * 
+  */
+  SetTemp(val) {
     if ( this.data ) {
       this.data.temperature.target += val
-      component.render();
-      this.simulateTemperature(component);
+      console.log(this.dependencies['temp'])
+      this.dependencies['temp'].forEach(element => {
+        element.render();
+      });
     }
   }
 
@@ -25,27 +51,12 @@ export default class Store {
       component.render();
     }
   }
-
-
-
-  //fake temperature adjustment
-  simulateTemperature(component){
-    const temp = this.data.temperature
-
-    if (temp.current === temp.target) return;
-
-    if (temp.current > temp.target) setTimeout( () => {
-      this.data.temperature.current--;
-      component.render();
-      this.simulateTemperature(component);
-    },3000);
-
-    if (temp.current < temp.target) setTimeout( () => {
-      this.data.temperature.current++;
-      component.render();
-      this.simulateTemperature(component);
-    },3000);
-
+  
+  SetRoute(index, component) {
+    if( this.data ) {
+      this.currentRoute = index;
+      this.routeWrapper.render();
+    }
   }
   
 }
