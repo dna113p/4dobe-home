@@ -3,7 +3,7 @@ import axios from 'axios';
 const mockData = {
   "temperature": {
     "current": 72,
-    "target": 72 
+    "target": 72
   },
   "lights": [
     {"room": "Patio", "switched": "on", "hours": 20},

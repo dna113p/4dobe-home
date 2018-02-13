@@ -4,7 +4,7 @@ import $ from 'jquery';
 class HeatingWidget extends Component{
 
   constructor( store ) {
-    super('<div class="heating-widget-wrapper"></div>')
+    super('<div class="heating-display"></div>')
     this.store = store;
     this.state = {
       adjustTemp: false
@@ -26,23 +26,13 @@ class HeatingWidget extends Component{
     })
   }
 
-  //Setup pices of HeaingWidget and render
   render() {
     const temp = this.store.data.temperature
-    //Wrapper elements
     const IndicatorLayout = $('<div class="heating-indicator"></div>');
-    const TempLayout = $('<div class="heating-widget"></div>');
-
-    //Initialize child components
-    const Up = new Button({direction:'up', adjustHeat: () => this.store.SetTemp(1,this)});
-    const Down = new Button({direction:'down', adjustHeat: () => this.store.SetTemp(-1,this)});
-
-    //Temperature control/display elements
-    const $Up = Up.render();
-    const $Down = Down.render();
+    //Temperature display elements
     const $Temp = $(
     `<div class="temp-display">
-      ${this.state.adjustTemp ? temp.target : temp.current }&deg;
+      ${temp.current }&deg;
     </div>`);
 
     //Heating status indicator
@@ -53,30 +43,11 @@ class HeatingWidget extends Component{
 
     //Render Temp and Buttons to the root elemetn
     IndicatorLayout.html( $Indicator );
-    TempLayout.html( this.state.adjustTemp ? [$Up, $Temp, $Down] : $Temp ) ;
-    this.$root.html( [IndicatorLayout, TempLayout] );
+    this.$root.html( [IndicatorLayout, $Temp] );
     return this.$root
   }
 
 }
 
-class Button extends Component {
-  constructor(props) {
-    super(
-      `<button class="temp-button">
-        <i class="fas fa-angle-${props.direction} fa-3x">
-      </button>`
-    )
-    this.adjustHeat = props.adjustHeat;
-  }
-  bindEvents() {
-    this.$root.click( e => {
-      this.adjustHeat()
-    })
-  }
-  render() {
-    return this.$root
-  }
-}
 
 export default HeatingWidget;

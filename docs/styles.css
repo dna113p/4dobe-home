@@ -2,8 +2,8 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background-color: #fafcfa;
-  color: #121;
+  background: #eaecea;
+  color: #334;
   margin: 0;
 
   display: flex;
@@ -16,17 +16,31 @@ body {
 }
 
 header {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  background: #eaecea;
+  width: 100%;
+  background: #fefefb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.header {
+  width: 100%;
+  max-width: 900px;
   padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .header h1 {
   font-weight: 400;
   font-size: 20px;
+}
+
+.heating-display {
+  display: flex;
+  align-items: baseline;
 }
 
 .heating-widget-wrapper {
@@ -93,6 +107,7 @@ span {
 }
 
 .light-item {
+  background: #fefefb;
   display: flex;
   justify-content: space-between;
   font-size: 30px;
