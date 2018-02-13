@@ -11,6 +11,7 @@ export default class App {
   constructor( root ){
     this.$root = $(root);
     this.store = new Store;
+    this.store.routeWrapper = this;
   }
 
   //Call this to render component
@@ -22,11 +23,17 @@ export default class App {
       Header.append( $(`<h1>DJ's Home</h1>`), Heating.render() )
       HeaderWrapper.html(Header)
 
+    const NavBar = new Nav(this.store);
+
     const Main = $(`<main></main>`)
-      const Lights = new LightList(this.store);
-      Main.html( Lights.render() )
+    const Lights = new LightList(this.store);
+    const TemperatureControl = new HeatingWidget(this.store);
+    const Routes = [Lights,TemperatureControl]
 
+    Main.html( 
+      Routes[this.store.currentRoute].render()
+    )
 
-    this.$root.html( [HeaderWrapper, Main] )
+    this.$root.html( [HeaderWrapper, NavBar.render(), Main] )
   }
 }
