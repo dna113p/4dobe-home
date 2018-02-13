@@ -6,6 +6,7 @@ class HeatingWidget extends Component{
   constructor( store ) {
     super('<div class="heating-widget-wrapper"></div>')
     this.store = store;
+    this.store.registerDep('temp',this)
     this.state = {
       adjustTemp: false
     }
@@ -29,32 +30,26 @@ class HeatingWidget extends Component{
   //Setup pices of HeaingWidget and render
   render() {
     const temp = this.store.data.temperature
-    //Wrapper elements
-    const IndicatorLayout = $('<div class="heating-indicator"></div>');
     const TempLayout = $('<div class="heating-widget"></div>');
 
     //Initialize child components
-    const Up = new Button({direction:'up', adjustHeat: () => this.store.SetTemp(1,this)});
-    const Down = new Button({direction:'down', adjustHeat: () => this.store.SetTemp(-1,this)});
+    const Up = new Button({direction:'up', adjustHeat: () => this.store.SetTemp(1)});
+    const Down = new Button({direction:'down', adjustHeat: () => this.store.SetTemp(-1)});
 
     //Temperature control/display elements
     const $Up = Up.render();
     const $Down = Down.render();
     const $Temp = $(
     `<div class="temp-display">
-      ${this.state.adjustTemp ? temp.target : temp.current }&deg;
+      ${temp.target}&deg;
     </div>`);
 
     //Heating status indicator
     const tempDiff = temp.target - temp.current;
-    const $Indicator = 
-      tempDiff > 0 ? $(`<i class="pulse fas fa-fire fa-2x"></i>`) :
-      tempDiff < 0 ? $(`<i class="pulse fas fa-snowflake fa-2x"></i>`) : ''
 
     //Render Temp and Buttons to the root elemetn
-    IndicatorLayout.html( $Indicator );
-    TempLayout.html( this.state.adjustTemp ? [$Up, $Temp, $Down] : $Temp ) ;
-    this.$root.html( [IndicatorLayout, TempLayout] );
+    TempLayout.html( [$Up, $Temp, $Down] ) ;
+    this.$root.html( [$('<div>Set desired temp:</div>'),TempLayout] );
     return this.$root
   }
 

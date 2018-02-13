@@ -6,6 +6,7 @@ class HeatingWidget extends Component{
   constructor( store ) {
     super('<div class="heating-display"></div>')
     this.store = store;
+    store.registerDep('temp',this)
     this.state = {
       adjustTemp: false
     }
@@ -29,7 +30,7 @@ class HeatingWidget extends Component{
   render() {
     const temp = this.store.data.temperature
     const IndicatorLayout = $('<div class="heating-indicator"></div>');
-    //Temperature display elements
+    //Temperature display element
     const $Temp = $(
     `<div class="temp-display">
       ${temp.current }&deg;
@@ -38,8 +39,8 @@ class HeatingWidget extends Component{
     //Heating status indicator
     const tempDiff = temp.target - temp.current;
     const $Indicator = 
-      tempDiff > 0 ? $(`<i class="pulse fas fa-fire fa-2x"></i>`) :
-      tempDiff < 0 ? $(`<i class="pulse fas fa-snowflake fa-2x"></i>`) : ''
+      tempDiff > 0 ? $(`<i class="pulse fas fa-fire"></i>`) :
+      tempDiff < 0 ? $(`<i class="pulse fas fa-snowflake"></i>`) : ''
 
     //Render Temp and Buttons to the root elemetn
     IndicatorLayout.html( $Indicator );
