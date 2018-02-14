@@ -6,6 +6,7 @@ import HeatDisplay from './components/HeatDisplay';
 import Nav from './components/Nav';
 import HeatingWidget from './components/HeatingWidget';
 import LightList from './components/Lights';
+import CurtainList from './components/Curtains';
 
 export default class App {
   //Custom App component for the base of our application
@@ -32,8 +33,9 @@ export default class App {
     const NavBar = new Nav(this.store);
     const Lights = new LightList(this.store);
     const TemperatureControl = new HeatingWidget(this.store);
+    const CurtainControl = new CurtainList(this.store);
 
-    const Routes = [Lights,TemperatureControl]
+    const Routes = [Lights,TemperatureControl, CurtainControl]
     Main.html(Routes[this.store.currentRoute].render())
 
     //Finally render all children to the root element (document.body)

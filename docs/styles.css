@@ -188,6 +188,7 @@ main {
     color: #64B5F6;
 }
 
+
 .lighting-wrapper {
     padding-top: 30px;
     width: 500px;
@@ -217,4 +218,7 @@ main {
 
 .on .fa-power-off {
     color: #4CAF50;
+}
+.on .fa-sun{
+    color: orangered;
 }

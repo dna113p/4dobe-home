@@ -7,5 +7,10 @@
     {"room": "Patio", "switched": "on", "hours": 20},
     {"room": "Living Room", "switched": "off", "hours": 32},
     {"room": "Kitchen", "switched": "on", "hours": 112}
+  ],
+  "curtains": [
+    {"room": "Patio", "switched": "on", "hours": 20},
+    {"room": "Living Room", "switched": "off", "hours": 32},
+    {"room": "Kitchen", "switched": "on", "hours": 112}
   ]
 }

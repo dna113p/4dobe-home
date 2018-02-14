@@ -11,7 +11,7 @@ export default class Store {
     this.routes = [
       { name: 'Lighting', class: 'far fa-lightbulb' },
       { name: 'Temperature', class: 'fas fa-thermometer-half' },
-      { name: 'Settings', class: 'fas fa-cog' }
+      { name: 'Curtains', class: 'far fa-sun' },
     ]
     this.currentRoute = 0;
     this.routeWrapper = null
@@ -27,7 +27,6 @@ export default class Store {
   registerDep(key, component){
     if ( this.dependencies[key] === undefined ) this.dependencies[key] = [];
     this.dependencies[key].push(component);
-    console.log(this.dependencies)
   }
 
   /*
