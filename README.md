@@ -1,8 +1,8 @@
 # 4dobe Home Automation Panel
 
-[Live link]( dna113p.github.io/4dobe-home/)
+[Live link]("https://dna113p.github.io/4dobe-home/")
 
-[Source]( github.com/dna113p/4dobe-home/)
+[Source]("https://github.com/dna113p/4dobe-home/")
 
 ```
 git clone https://github.com/dna113p/4dobe-home.git
