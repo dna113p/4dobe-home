@@ -28,7 +28,7 @@ class LightItem extends Component {
   constructor(props) {
     super(
       `<div class="light-item ${props.switched}">
-        <div class="${props.switched}>
+        <div class="${props.switched}">
           <i class="far fa-lightbulb ${props.switched}"></i>
           ${props.room}
         </div>
