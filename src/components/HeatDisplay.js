@@ -14,7 +14,7 @@ class HeatingWidget extends Component{
     const IndicatorLayout = $('<div class="heating-indicator"></div>');
 
     //Temperature display element
-    const $Temp = $(`<div class="temp-display">${temp.current }&deg;</div>`);
+    const $Temp = $(`<div class="temp-display-small">${temp.current }&deg;</div>`);
 
     //Heating status indicator
     const tempDiff = temp.target - temp.current;

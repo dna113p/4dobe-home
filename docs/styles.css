@@ -1,184 +1,220 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
-
 body {
-  font-family: 'Lato', sans-serif;
-  background: #eaecea;
-  color: #334;
-  margin: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    background: #eaecea;
+    color: #334;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  color: #eef;
-  background-color:#035;
-  z-index: 10;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: #eef;
+    background-color: #035;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-
 
 .header {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
+
 .header h1 {
-  font-weight: 800;
-  font-size: 35px;
+    font-weight: 400;
+    font-size: 35px;
+    padding: 10px;
 }
 
 .nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -80px;
-  width: 100%;
-  background: #fefefb;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: margin 0.2s;
-}
-.nav:hover {
-  margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -80px;
+    width: 100%;
+    background: #fefefb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: margin 0.2s;
 }
 
-.nav-top, .nav-bot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
+.nav:hover {
+    margin-top: 0;
 }
-.nav-button {
-  height: 50px;
-  width: 50px;
-  margin: 5px;
-  border: 2px solid #0277BD;
-  background: none;
-  border-radius: 50px;
-  color: #0277BD;
-  transition: all 0.2s;
-}
-.nav-button:hover {
-  color: #eee;
-  background: #0277BD;
-  cursor: pointer;
-}
-.nav-top {
-  height: 80px;
-}
+
+.nav-top,
 .nav-bot {
-  height: 50px;
-  font-size: 25px;
-  color: #0277BD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.nav-button {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    border: 2px solid #0277BD;
+    background: none;
+    border-radius: 50px;
+    color: #0277BD;
+    transition: all 0.2s;
+}
+
+.nav-button:hover {
+    color: #eee;
+    background: #0277BD;
+    cursor: pointer;
+}
+
+.nav-top {
+    height: 80px;
+}
+
+.nav-bot {
+    height: 50px;
+    font-size: 25px;
+    color: #0277BD;
 }
 
 .heating-display {
-  display: flex;
-  align-items: baseline;
+    display: flex;
+    align-items: baseline;
 }
 
-.heating-widget-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.heating-widget {
-  /* height: 100%; */
+main {
+  padding: 30px 0px;;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
 
-span {
-  font-size: 12px;
+.heating-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heating-widget-wrapper:first-child {
+  font-size: 30px;
+}
+
+.heating-widget {
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .temp-display {
-  font-size: 60px;
-  font-weight: 400;
-  cursor: default;
+    font-size: 90px;
+    font-weight: 400;
+    cursor: default;
+}
+.temp-display-small {
+    font-size: 50px;
+    font-weight: 400;
+    padding: 10px;
 }
 
 .temp-button {
-  border: none;
-  cursor: pointer;
-  background: none;
-  transition: all 0.2s;
-}
-.temp-button:hover {
-  transform: scale(1.2)
+    border: none;
+    cursor: pointer;
+    background: none;
+    transition: all 0.2s;
 }
 
+.temp-button:hover {
+    transform: scale(1.2)
+}
 
 @keyframes pulse_animation {
-	0% { transform: scale(1); }
-	30% { transform: scale(1); }
-	40% { transform: scale(1.2); }
-	50% { transform: scale(1); }
-	60% { transform: scale(1); }
-	70% { transform: scale(1.1); }
-	80% { transform: scale(1); }
-	100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .pulse {
-	animation-name: pulse_animation;
-	animation-duration: 4000ms;
-	transform-origin:50% 50%;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
+    animation-name: pulse_animation;
+    animation-duration: 4000ms;
+    transform-origin: 50% 50%;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 .fa-fire {
-  color: #F44336;
+    color: #F44336;
 }
+
 .fa-snowflake {
-  color: #64B5F6;
+    color: #64B5F6;
 }
 
 .lighting-wrapper {
-  padding-top: 30px;
-  width: 500px;
-  max-width: 100%;
+    padding-top: 30px;
+    width: 500px;
+    max-width: 100%;
 }
 
 .light-item {
-  background: #fefefb;
-  display: flex;
-  justify-content: space-between;
-  font-size: 30px;
-  width: 100%;
-  padding: 10px;
-  margin: 10px;
-  transition: box-shadow 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: #fefefb;
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-
 
 .light-item:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
 }
 
-.off { 
-  color: #eee;
+.off {
+    color: #eee;
 }
+
 .on .fa-power-off {
-  color: #4CAF50;
-
+    color: #4CAF50;
 }
